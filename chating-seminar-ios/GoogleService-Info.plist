@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>363839110745-he417alr0vs6n2rq7lerto5v6k74jrne.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.363839110745-he417alr0vs6n2rq7lerto5v6k74jrne</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBZT1SKnZFma-tBamezZz-9lmFFwCibGQU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>363839110745</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.tqbdev.chating-seminar-ios</string>
+	<key>PROJECT_ID</key>
+	<string>chatting-seminar</string>
+	<key>STORAGE_BUCKET</key>
+	<string>chatting-seminar.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:363839110745:ios:25c58e6fdd42363f</string>
+	<key>DATABASE_URL</key>
+	<string>https://chatting-seminar.firebaseio.com</string>
+</dict>
+</plist>
