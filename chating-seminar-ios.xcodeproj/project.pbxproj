@@ -15,6 +15,8 @@
 		0CE64684207BD3B4001E41D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE64682207BD3B4001E41D2 /* Main.storyboard */; };
 		0CE64686207BD3B4001E41D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CE64685207BD3B4001E41D2 /* Assets.xcassets */; };
 		0CE64689207BD3B4001E41D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE64687207BD3B4001E41D2 /* LaunchScreen.storyboard */; };
+		0CF45C7420E8FF1C00E7E62F /* CustomSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF45C7320E8FF1C00E7E62F /* CustomSlideViewController.swift */; };
+		0CF45C7620E901CA00E7E62F /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF45C7520E901CA00E7E62F /* LeftViewController.swift */; };
 		26FD297CD35CCE0111A37B3F /* Pods_chating_seminar_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEB7593F869DDE7DDBBED74 /* Pods_chating_seminar_ios.framework */; };
 		8E46A5BC209DF36A003288E1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E46A5BB209DF36A003288E1 /* Message.swift */; };
 		8E46A5BE209E5345003288E1 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E46A5BD209E5345003288E1 /* MessageCell.swift */; };
@@ -34,6 +36,8 @@
 		0CE64685207BD3B4001E41D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CE64688207BD3B4001E41D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CE6468A207BD3B4001E41D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CF45C7320E8FF1C00E7E62F /* CustomSlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlideViewController.swift; sourceTree = "<group>"; };
+		0CF45C7520E901CA00E7E62F /* LeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		23340D40B8B02497A32E924E /* Pods-chating-seminar-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chating-seminar-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-chating-seminar-ios/Pods-chating-seminar-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		84B1FF7452DAC794CB895060 /* Pods-chating-seminar-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chating-seminar-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-chating-seminar-ios/Pods-chating-seminar-ios.release.xcconfig"; sourceTree = "<group>"; };
 		8E46A5BB209DF36A003288E1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -91,6 +95,8 @@
 				8EE67423208CA9C5009EECD6 /* TableViewCell.swift */,
 				8EE8C3A12094EC41009B3548 /* ChatViewController.swift */,
 				8E46A5BB209DF36A003288E1 /* Message.swift */,
+				0CF45C7320E8FF1C00E7E62F /* CustomSlideViewController.swift */,
+				0CF45C7520E901CA00E7E62F /* LeftViewController.swift */,
 			);
 			path = "chating-seminar-ios";
 			sourceTree = "<group>";
@@ -249,9 +255,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E6029D5208B5D5C00B8F812 /* FriendListViewController.swift in Sources */,
+				0CF45C7420E8FF1C00E7E62F /* CustomSlideViewController.swift in Sources */,
 				0C30A10320872CCC00E0C0F7 /* LoginViewController.swift in Sources */,
 				0C30A1052087562C00E0C0F7 /* MessageUserViewController.swift in Sources */,
 				8E46A5BE209E5345003288E1 /* MessageCell.swift in Sources */,
+				0CF45C7620E901CA00E7E62F /* LeftViewController.swift in Sources */,
 				8EE8C3A22094EC41009B3548 /* ChatViewController.swift in Sources */,
 				8EE67424208CA9C5009EECD6 /* TableViewCell.swift in Sources */,
 				8E46A5BC209DF36A003288E1 /* Message.swift in Sources */,
