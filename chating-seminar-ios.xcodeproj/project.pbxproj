@@ -17,8 +17,7 @@
 		0CE64689207BD3B4001E41D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE64687207BD3B4001E41D2 /* LaunchScreen.storyboard */; };
 		26FD297CD35CCE0111A37B3F /* Pods_chating_seminar_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEB7593F869DDE7DDBBED74 /* Pods_chating_seminar_ios.framework */; };
 		8E46A5BC209DF36A003288E1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E46A5BB209DF36A003288E1 /* Message.swift */; };
-		8E46A5BE209E5345003288E1 /* GetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E46A5BD209E5345003288E1 /* GetTableViewCell.swift */; };
-		8E46A5C0209E5355003288E1 /* SendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E46A5BF209E5355003288E1 /* SendTableViewCell.swift */; };
+		8E46A5BE209E5345003288E1 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E46A5BD209E5345003288E1 /* MessageCell.swift */; };
 		8E6029D5208B5D5C00B8F812 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6029D4208B5D5C00B8F812 /* FriendListViewController.swift */; };
 		8EE67424208CA9C5009EECD6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE67423208CA9C5009EECD6 /* TableViewCell.swift */; };
 		8EE8C3A22094EC41009B3548 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE8C3A12094EC41009B3548 /* ChatViewController.swift */; };
@@ -38,8 +37,7 @@
 		23340D40B8B02497A32E924E /* Pods-chating-seminar-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chating-seminar-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-chating-seminar-ios/Pods-chating-seminar-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		84B1FF7452DAC794CB895060 /* Pods-chating-seminar-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chating-seminar-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-chating-seminar-ios/Pods-chating-seminar-ios.release.xcconfig"; sourceTree = "<group>"; };
 		8E46A5BB209DF36A003288E1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		8E46A5BD209E5345003288E1 /* GetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTableViewCell.swift; sourceTree = "<group>"; };
-		8E46A5BF209E5355003288E1 /* SendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTableViewCell.swift; sourceTree = "<group>"; };
+		8E46A5BD209E5345003288E1 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		8E6029D4208B5D5C00B8F812 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		8EE67423208CA9C5009EECD6 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		8EE8C3A12094EC41009B3548 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -89,8 +87,7 @@
 				0C30A10220872CCC00E0C0F7 /* LoginViewController.swift */,
 				0C30A1042087562C00E0C0F7 /* MessageUserViewController.swift */,
 				8E6029D4208B5D5C00B8F812 /* FriendListViewController.swift */,
-				8E46A5BD209E5345003288E1 /* GetTableViewCell.swift */,
-				8E46A5BF209E5355003288E1 /* SendTableViewCell.swift */,
+				8E46A5BD209E5345003288E1 /* MessageCell.swift */,
 				8EE67423208CA9C5009EECD6 /* TableViewCell.swift */,
 				8EE8C3A12094EC41009B3548 /* ChatViewController.swift */,
 				8E46A5BB209DF36A003288E1 /* Message.swift */,
@@ -197,14 +194,12 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -252,8 +247,7 @@
 				8E6029D5208B5D5C00B8F812 /* FriendListViewController.swift in Sources */,
 				0C30A10320872CCC00E0C0F7 /* LoginViewController.swift in Sources */,
 				0C30A1052087562C00E0C0F7 /* MessageUserViewController.swift in Sources */,
-				8E46A5C0209E5355003288E1 /* SendTableViewCell.swift in Sources */,
-				8E46A5BE209E5345003288E1 /* GetTableViewCell.swift in Sources */,
+				8E46A5BE209E5345003288E1 /* MessageCell.swift in Sources */,
 				8EE8C3A22094EC41009B3548 /* ChatViewController.swift in Sources */,
 				8EE67424208CA9C5009EECD6 /* TableViewCell.swift in Sources */,
 				8E46A5BC209DF36A003288E1 /* Message.swift in Sources */,

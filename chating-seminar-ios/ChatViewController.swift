@@ -18,16 +18,10 @@ class ChatViewController: UIViewController, UITextFieldDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chat:(type:Bool,message:String,time:Int) = ChatLog[indexPath.row]
-        if(chat.type) {
-            let cell = chetTableView.dequeueReusableCell(withIdentifier: "GetTableViewCell") as! GetTableViewCell
-            cell.tv.text = chat.message
-            return cell
-        }
-        else{
-            let cell = chetTableView.dequeueReusableCell(withIdentifier: "SendTableViewCell") as! SendTableViewCell
-            cell.tv.text = chat.message
-            return cell
-        }
+        let cell = chetTableView.dequeueReusableCell(withIdentifier: (!chat.type) ? "RightMessageCell" : "LeftMessageCell") as! MessageCell
+        cell.lblMessage.text = chat.message
+//        cell.imgAvatar.image =
+        return cell
     }
     
     var infoPass:(id:String,email:String)?
