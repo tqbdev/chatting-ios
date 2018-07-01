@@ -11,20 +11,18 @@ import Firebase
 import Photos
 var ref: DatabaseReference?
 
-class FriendListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate, UITextFieldDelegate, UINavigationControllerDelegate, SildeMenuDelegate {
+class FriendListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate, UINavigationControllerDelegate, SildeMenuDelegate {
     lazy var storage = Storage.storage()
     
     var leftVC: LeftViewController?
     
     var senderDisplayName: String?
-    @IBOutlet weak var emailTextField: UITextField?
     @IBOutlet weak var UserAvatar: UIImageView!
     @IBOutlet weak var emailTableView: UITableView?
     var emailList: [(id:String,email:String)] = [(String,String)]()
     var user:User?
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailTextField?.delegate = self
         // Do any additional setup after loading the view.
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(self.menuAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(self.createAction))
@@ -149,58 +147,58 @@ class FriendListViewController: UIViewController,UITableViewDataSource,UITableVi
     }
 
     @objc func createAction() {
-        self.view.endEditing(true)
-
-        var emailTxt:String? = emailTextField?.text
-        if(emailTxt != nil){
-            if(checkArrayFriend(email: emailTxt!)) {
-                self.emailTextField?.text = ""
-                let arlet = UIAlertController(title: nil, message: "Email already added", preferredStyle: .alert)
-                arlet.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self.present(arlet, animated: true, completion: {
-                    self.emailTextField?.text = ""
-                })
-                return
-            }
-            ref?.child("ListUser").observe(.childAdded, with:{
-                (snapshot) in
-                let postDict = snapshot.value as? [String:Any]
-                if(postDict != nil){
-                    let email:String = postDict!["email"] as! String
-                    let user = Auth.auth().currentUser
-                    if(emailTxt?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines) != ""){
-                    if(emailTxt == user?.email) {
-                        let arlet = UIAlertController(title: nil, message: "Can't add yourself", preferredStyle: .alert)
-                        arlet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                        self.present(arlet, animated: true, completion: {
-                            self.emailTextField?.text = ""
-                            
-                        })
-                    }
-                        if(emailTxt == email ){
-                            print(emailTxt!)
-                        //self.emailList.append((snapshot.key,email))
-                        self.emailTableView?.reloadData()
-                        self.emailTextField?.text = ""
-                        emailTxt = ""
-                        //Add to Firebase Database
-                        let friendUser = ["email":email,"new":0] as [String : Any]
-                        let userID = ref?.child("ListUser").child(user!.uid)
-                            .child("FriendList").child(snapshot.key)
-                        userID?.setValue(friendUser)
-                        let thisUser = ["email":user!.email!,"new":0] as [String : Any]
-                        ref?.child("ListUser").child(snapshot.key).child("FriendList").child(user!.uid).setValue(thisUser)
-                        return
-                    }
+        let alertView = UIAlertController(title: "Add Friend", message: "", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .destructive) { (action) in
+            let emailTextField = alertView.textFields![0] as UITextField
+            let emailTxt = emailTextField.text
+            if(emailTxt != nil){
+                if(self.checkArrayFriend(email: emailTxt!)) {
+                    let arlet = UIAlertController(title: nil, message: "Email already added", preferredStyle: .alert)
+                    arlet.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(arlet, animated: true, completion: nil)
+                    return
                 }
+                ref?.child("ListUser").observe(.childAdded, with:{
+                    (snapshot) in
+                    let postDict = snapshot.value as? [String:Any]
+                    if(postDict != nil){
+                        let email:String = postDict!["email"] as! String
+                        let user = Auth.auth().currentUser
+                        if(emailTxt?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines) != ""){
+                            if(emailTxt == user?.email) {
+                                let arlet = UIAlertController(title: nil, message: "Can't add yourself", preferredStyle: .alert)
+                                arlet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                                self.present(arlet, animated: true, completion: nil)
+                            }
+                            else if(emailTxt == email ){
+                                //self.emailList.append((snapshot.key,email))
+                                self.emailTableView?.reloadData()
+                                //Add to Firebase Database
+                                let friendUser = ["email":email,"new":0] as [String : Any]
+                                let userID = ref?.child("ListUser").child(user!.uid)
+                                    .child("FriendList").child(snapshot.key)
+                                userID?.setValue(friendUser)
+                                let thisUser = ["email":user!.email!,"new":0] as [String : Any]
+                                ref?.child("ListUser").child(snapshot.key).child("FriendList").child(user!.uid).setValue(thisUser)
+                                return
+                            }
+                        }
+                    }
+                })
             }
-            })
-            }
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        createAction()
-        return true
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        alertView.addTextField { (textField) in
+            textField.placeholder = "Enter email"
+        }
+        
+        alertView.addAction(okAction)
+        alertView.addAction(cancelAction)
+        
+        present(alertView, animated: true, completion: nil)
     }
     
     func addOnlineUser() {
