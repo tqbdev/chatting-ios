@@ -21,10 +21,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func testCrashBtnAction(_ sender: Any) {
-        Crashlytics.sharedInstance().crash()
-    }
-    
     @IBAction func testBtnAction(_ sender: Any?){
 
         

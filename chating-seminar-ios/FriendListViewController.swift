@@ -13,8 +13,10 @@ var ref: DatabaseReference?
 
 var currentUser:User?
 
-class FriendListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class FriendListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate, UITextFieldDelegate, UINavigationControllerDelegate, LogoutDelegate {
     lazy var storage = Storage.storage()
+    
+    var leftVC: LeftViewController?
     
     var senderDisplayName: String?
     @IBOutlet weak var emailTextField: UITextField?
@@ -30,41 +32,46 @@ class FriendListViewController: UIViewController,UITableViewDataSource,UITableVi
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(self.createAction))
         self.title = "Friends List"
         
+        initProfileViewController()
+        addGesture()
+        
         ref = Database.database().reference()
         
-        UserAvatar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleSelectUserAvatar)))
-        UserAvatar.isUserInteractionEnabled = true
-        
         addOnlineUser()
-        loadUserAvatar()
     }
     
+    fileprivate func initProfileViewController() {
+        let leftVC = storyboard?.instantiateViewController(withIdentifier: "LeftViewController") as! LeftViewController
+        leftVC.delegate = self
+        if let frame = UIApplication.shared.windows.last?.frame {
+            leftVC.resetWidth(parentWidth: frame.width)
+            leftVC.shadowColor = UIColor(red: 46.0/255, green: 24.0/255, blue: 82.0/255, alpha: 0.7)
+            leftVC.hasShadow = true
+            UIApplication.shared.windows.last?.addSubview(leftVC.view)
+        }
+        self.leftVC = leftVC
+    }
+    
+    fileprivate func addGesture() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapInSelf))
+        self.view.addGestureRecognizer(gesture)
+    }
+    
+    fileprivate func showLeftViewController() {
+        leftVC?.expand()
+    }
+    
+    @objc func tapInSelf() {
+        leftVC?.close()
+    }
+    
+    // MARK: Logout successfull
+    func logout() {
+        leftVC?.close()
+        self.navigationController?.popToRootViewController(animated: true)
+    }
     
     // MARK: Firebase storage avatar
-    func loadUserAvatar() {
-        let storageRef = storage.reference()
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let documentsDirectory = paths[0]
-        let filePath = "file:\(documentsDirectory)/" + (Auth.auth().currentUser?.email!)! + ".jpg"
-        guard let fileURL = URL(string: filePath) else { return }
-        let storagePath = "profileAvatars/" + (Auth.auth().currentUser?.email!)! + ".jpg"
-        
-        // [START downloadimage]
-        storageRef.child(storagePath).write(toFile: fileURL, completion: { (url, error) in
-            if let error = error {
-                print("Error downloading:\(error)")
-                print ("Download Failed")
-                return
-            } else if let imagePath = url?.path {
-                print ("Download Succeeded!")
-                self.UserAvatar.image = UIImage(contentsOfFile: imagePath)
-                self.UserAvatar.layer.cornerRadius = self.UserAvatar.layer.bounds.width/2
-                self.UserAvatar.layer.masksToBounds = true
-            }
-        })
-        // [END downloadimage]
-    }
-    
     func loadAvatar(email: String, imageView: UIImageView) {
         let storageRef = storage.reference()
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
@@ -86,63 +93,6 @@ class FriendListViewController: UIViewController,UITableViewDataSource,UITableVi
         })
         // [END downloadimage]
     }
-    
-    @objc func handleSelectUserAvatar() {
-        let alert = UIAlertController(title: "Do you wanna change avatar?", message: "", preferredStyle: .actionSheet)
-        let okAction = UIAlertAction(title: "OK", style: .destructive) {
-            (action) in
-            let picker = UIImagePickerController()
-            picker.sourceType = .photoLibrary
-            picker.delegate = self
-            self.present(picker, animated: true, completion: nil)
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(okAction)
-        alert.addAction(cancelAction)
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        self.dismiss(animated: true, completion: nil)
-        
-        var selectedImageFromPicker: UIImage?
-        
-        if let editedImage = info[UIImagePickerControllerEditedImage] {
-            selectedImageFromPicker = editedImage as? UIImage
-        } else if let originalImage = info[UIImagePickerControllerOriginalImage] {
-            selectedImageFromPicker = originalImage as? UIImage
-        }
-        
-        if let selectedImage = selectedImageFromPicker {
-            UserAvatar.image = selectedImage
-            UserAvatar.layer.cornerRadius = UserAvatar.layer.bounds.width/2
-            UserAvatar.layer.masksToBounds = true
-        
-            // Upload image avatar to storage firebase
-            // [START uploadimage]
-            guard let imageData = UIImageJPEGRepresentation(selectedImage, 0.8) else { return }
-            let imagePath = "profileAvatars/" + (Auth.auth().currentUser?.email!)! + ".jpg"
-            let metaData = StorageMetadata()
-            metaData.contentType = "image/jpeg"
-            let storageRef = self.storage.reference(withPath: imagePath)
-            storageRef.putData(imageData, metadata: metaData) { (metadata, error) in
-                if let error = error {
-                    print ("Error uploading: \(error)")
-                    return
-                }
-                print ("Uploaded avatar image")
-            }
-            // [START uploadimage]
-        }
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    //
     
     override func viewWillAppear(_ animated: Bool) {
         emailList = []
@@ -190,20 +140,7 @@ class FriendListViewController: UIViewController,UITableViewDataSource,UITableVi
     }
     
     @objc func menuAction() {
-        let actionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
-        actionMenu.addAction(UIAlertAction(title: "Log out", style: .destructive, handler:
-            {
-                (alert: UIAlertAction!) -> Void in
-                        do {
-                            try Auth.auth().signOut()
-                            print("Logout successfully")
-                            self.navigationController?.popViewController(animated: true)
-                        } catch {
-                            print(error)
-                        }
-        }))
-        actionMenu.addAction(UIAlertAction(title: "Cancel",style: .cancel, handler:nil))
-        self.present(actionMenu, animated: true, completion: nil)
+        showLeftViewController()
     }
 
     @objc func createAction() {
