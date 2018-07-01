@@ -1,5 +1,5 @@
 //
-//  LeftViewController.swift
+//  InfoViewController.swift
 //  chating-seminar-ios
 //
 //  Created by Tran Quoc Bao on 7/1/18.
@@ -11,52 +11,66 @@ import UIKit
 import Firebase
 import Photos
 
-protocol SildeMenuDelegate {
-    func logout()
-    func gotoInfoView()
-}
+class InfoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
-class LeftViewController: CustomSlideViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    var delegate: SildeMenuDelegate?
-    
     lazy var storage = Storage.storage()
-
+    lazy var databaseRef = Database.database().reference()
+    
     @IBOutlet weak var userAvatar: UIImageView!
     
-    @IBAction func getInfoView(_ sender: UIButton) {
-        self.close()
-        delegate?.gotoInfoView()
+    @IBOutlet weak var emailText: UITextField!
+    
+    @IBOutlet weak var nameText: UITextField!
+    
+    @IBAction func updateAction(_ sender: UIButton) {
+        let user = Auth.auth().currentUser!
+        databaseRef.child("ListUser").child((user.uid)).child("name").setValue(nameText.text ?? nil)
+        
+        let date = self.dobPicker.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        databaseRef.child("ListUser").child((user.uid)).child("dob").setValue(dateFormatter.string(from: date))
     }
     
-    @IBAction func goToPersonalChatView(_ sender: UIButton) {
-    }
-    
-    @IBAction func goToGroupChatView(_ sender: UIButton) {
-    }
-    
-    @IBAction func logoutAction(_ sender: UIButton) {
-        do {
-            try Auth.auth().signOut()
-            print("Logout successfully")
-            delegate?.logout()
-        } catch {
-            print(error)
-        }
-    }
+    @IBOutlet weak var dobPicker: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        nameText.delegate = self
+        loadInfo()
         loadUserAvatar()
-    userAvatar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleSelectUserAvatar)))
+        userAvatar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleSelectUserAvatar)))
         userAvatar.isUserInteractionEnabled = true
-
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
+    func loadInfo() {
+        let user = Auth.auth().currentUser!
+        let userVal = databaseRef.child("ListUser").child((user.uid))
+        userVal.observe(.value, with: {
+            (snapshot) in
+            let dict = snapshot.value as? [String : AnyObject] ?? nil
+            self.emailText.text = dict?["email"] as? String
+            self.nameText.text = dict?["name"] as? String
+            
+            if let dobStr = dict?["dob"] as? String {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd-MM-yyyy"
+                let dob = dateFormatter.date(from: dobStr);
+                self.dobPicker.date = dob!
+            }
+        })
     }
     
     @objc func handleSelectUserAvatar() {
@@ -113,7 +127,7 @@ class LeftViewController: CustomSlideViewController, UIImagePickerControllerDele
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
     func loadUserAvatar() {
         let storageRef = storage.reference()
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
@@ -137,7 +151,7 @@ class LeftViewController: CustomSlideViewController, UIImagePickerControllerDele
         })
         // [END downloadimage]
     }
-    
+
     /*
     // MARK: - Navigation
 

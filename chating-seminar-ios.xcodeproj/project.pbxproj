@@ -10,6 +10,7 @@
 		0C30A1012085BF1200E0C0F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C30A1002085BF1200E0C0F7 /* GoogleService-Info.plist */; };
 		0C30A10320872CCC00E0C0F7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C30A10220872CCC00E0C0F7 /* LoginViewController.swift */; };
 		0C30A1052087562C00E0C0F7 /* MessageUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C30A1042087562C00E0C0F7 /* MessageUserViewController.swift */; };
+		0CD6AA0E20E9165C0067A970 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD6AA0D20E9165C0067A970 /* InfoViewController.swift */; };
 		0CE6467F207BD3B4001E41D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE6467E207BD3B4001E41D2 /* AppDelegate.swift */; };
 		0CE64681207BD3B4001E41D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE64680207BD3B4001E41D2 /* ViewController.swift */; };
 		0CE64684207BD3B4001E41D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE64682207BD3B4001E41D2 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		0C30A1002085BF1200E0C0F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0C30A10220872CCC00E0C0F7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0C30A1042087562C00E0C0F7 /* MessageUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageUserViewController.swift; sourceTree = "<group>"; };
+		0CD6AA0D20E9165C0067A970 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		0CE6467B207BD3B4001E41D2 /* chating-seminar-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "chating-seminar-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CE6467E207BD3B4001E41D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CE64680207BD3B4001E41D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				8E46A5BB209DF36A003288E1 /* Message.swift */,
 				0CF45C7320E8FF1C00E7E62F /* CustomSlideViewController.swift */,
 				0CF45C7520E901CA00E7E62F /* LeftViewController.swift */,
+				0CD6AA0D20E9165C0067A970 /* InfoViewController.swift */,
 			);
 			path = "chating-seminar-ios";
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				8EE67424208CA9C5009EECD6 /* TableViewCell.swift in Sources */,
 				8E46A5BC209DF36A003288E1 /* Message.swift in Sources */,
 				0CE64681207BD3B4001E41D2 /* ViewController.swift in Sources */,
+				0CD6AA0E20E9165C0067A970 /* InfoViewController.swift in Sources */,
 				0CE6467F207BD3B4001E41D2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
