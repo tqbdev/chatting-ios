@@ -11,9 +11,7 @@ import Firebase
 import Photos
 var ref: DatabaseReference?
 
-var currentUser:User?
-
-class FriendListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate, UITextFieldDelegate, UINavigationControllerDelegate, LogoutDelegate {
+class FriendListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate, UITextFieldDelegate, UINavigationControllerDelegate, SildeMenuDelegate {
     lazy var storage = Storage.storage()
     
     var leftVC: LeftViewController?
@@ -69,6 +67,13 @@ class FriendListViewController: UIViewController,UITableViewDataSource,UITableVi
     func logout() {
         leftVC?.close()
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    // MARK: gotoInfoView
+    func gotoInfoView() {
+        let infoVC = storyboard?.instantiateViewController(withIdentifier: "infoView")
+        //present(infoVC!, animated: true, completion: nil)
+        navigationController?.pushViewController(infoVC!, animated: true)
     }
     
     // MARK: Firebase storage avatar
@@ -209,7 +214,7 @@ class FriendListViewController: UIViewController,UITableViewDataSource,UITableVi
                     let uid = user.uid
                     let email = user.email
                     let list = ref?.child("ListUser")
-                    let user = ["email":email]
+                    let user = ["email":email, "dob": nil, "name": nil]
                     let userId = list?.child(uid)
                     userId?.setValue(user)
                 }
