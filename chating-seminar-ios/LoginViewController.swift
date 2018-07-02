@@ -45,11 +45,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }
                 
                 if let user = user {
-                    if !user.user.isEmailVerified {
+                    if !user.isEmailVerified {
                         let alertVC = UIAlertController(title: "Login error", message: "Sorry. Your email address has not yet been verified. Do you want us to send another verification email to \(self.userEmail.text!).", preferredStyle: .alert)
                         let alertActionOkay = UIAlertAction(title: "Okay", style: .destructive) {
                             (_) in
-                            user.user.sendEmailVerification(completion: nil)
+                            user.sendEmailVerification(completion: nil)
                         }
                         let alertActionCancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
                         
@@ -94,9 +94,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                             }
                             
                             if let user = user {
-                                if !user.user.isEmailVerified {
+                                if !user.isEmailVerified {
                                     self.showNoticeMessage(title: "Please notice", message: "You email need to be verified. Please check mail and confirm.") { (action) in
-                                        user.user.sendEmailVerification(completion: nil)
+                                        user.sendEmailVerification(completion: nil)
                                     }
                                 }
                             }

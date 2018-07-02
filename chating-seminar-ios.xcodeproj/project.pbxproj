@@ -19,9 +19,19 @@
 		0CF45C7420E8FF1C00E7E62F /* CustomSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF45C7320E8FF1C00E7E62F /* CustomSlideViewController.swift */; };
 		0CF45C7620E901CA00E7E62F /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF45C7520E901CA00E7E62F /* LeftViewController.swift */; };
 		26FD297CD35CCE0111A37B3F /* Pods_chating_seminar_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEB7593F869DDE7DDBBED74 /* Pods_chating_seminar_ios.framework */; };
+		8E0A68F920E93D4200912907 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A68F820E93D4200912907 /* GroupViewController.swift */; };
 		8E46A5BC209DF36A003288E1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E46A5BB209DF36A003288E1 /* Message.swift */; };
 		8E46A5BE209E5345003288E1 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E46A5BD209E5345003288E1 /* MessageCell.swift */; };
+		8E55054E20E942DE009BA1CD /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E55054D20E942DE009BA1CD /* CustomButton.swift */; };
+		8E55055020E94306009BA1CD /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E55054F20E94306009BA1CD /* CustomView.swift */; };
 		8E6029D5208B5D5C00B8F812 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6029D4208B5D5C00B8F812 /* FriendListViewController.swift */; };
+		8E8F8E8820E94A3F00882F78 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F8E8720E94A3F00882F78 /* AddGroupViewController.swift */; };
+		8E8F8E8A20E958F000882F78 /* SelectedUserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F8E8920E958F000882F78 /* SelectedUserViewCell.swift */; };
+		8E8F8E8C20E9627800882F78 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F8E8B20E9627800882F78 /* Utils.swift */; };
+		8E8F8E9320E98AA200882F78 /* GroupViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F8E9220E98AA200882F78 /* GroupViewCell.swift */; };
+		8E8F8E9520E9911400882F78 /* GroupChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F8E9420E9911400882F78 /* GroupChatViewController.swift */; };
+		8E8F8E9720E99DBC00882F78 /* GroupMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F8E9620E99DBC00882F78 /* GroupMessageCell.swift */; };
+		8E8F8E9920E9A62A00882F78 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F8E9820E9A62A00882F78 /* MenuViewController.swift */; };
 		8EE67424208CA9C5009EECD6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE67423208CA9C5009EECD6 /* TableViewCell.swift */; };
 		8EE8C3A22094EC41009B3548 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE8C3A12094EC41009B3548 /* ChatViewController.swift */; };
 /* End PBXBuildFile section */
@@ -42,9 +52,19 @@
 		0CF45C7520E901CA00E7E62F /* LeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		23340D40B8B02497A32E924E /* Pods-chating-seminar-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chating-seminar-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-chating-seminar-ios/Pods-chating-seminar-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		84B1FF7452DAC794CB895060 /* Pods-chating-seminar-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chating-seminar-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-chating-seminar-ios/Pods-chating-seminar-ios.release.xcconfig"; sourceTree = "<group>"; };
+		8E0A68F820E93D4200912907 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		8E46A5BB209DF36A003288E1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		8E46A5BD209E5345003288E1 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		8E55054D20E942DE009BA1CD /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		8E55054F20E94306009BA1CD /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		8E6029D4208B5D5C00B8F812 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
+		8E8F8E8720E94A3F00882F78 /* AddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
+		8E8F8E8920E958F000882F78 /* SelectedUserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedUserViewCell.swift; sourceTree = "<group>"; };
+		8E8F8E8B20E9627800882F78 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		8E8F8E9220E98AA200882F78 /* GroupViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewCell.swift; sourceTree = "<group>"; };
+		8E8F8E9420E9911400882F78 /* GroupChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatViewController.swift; sourceTree = "<group>"; };
+		8E8F8E9620E99DBC00882F78 /* GroupMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMessageCell.swift; sourceTree = "<group>"; };
+		8E8F8E9820E9A62A00882F78 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		8EE67423208CA9C5009EECD6 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		8EE8C3A12094EC41009B3548 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		DAEB7593F869DDE7DDBBED74 /* Pods_chating_seminar_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_chating_seminar_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +103,7 @@
 		0CE6467D207BD3B4001E41D2 /* chating-seminar-ios */ = {
 			isa = PBXGroup;
 			children = (
+				8E55054C20E942C0009BA1CD /* Custom */,
 				0CE6467E207BD3B4001E41D2 /* AppDelegate.swift */,
 				0CE64680207BD3B4001E41D2 /* ViewController.swift */,
 				0CE64682207BD3B4001E41D2 /* Main.storyboard */,
@@ -100,6 +121,13 @@
 				0CF45C7320E8FF1C00E7E62F /* CustomSlideViewController.swift */,
 				0CF45C7520E901CA00E7E62F /* LeftViewController.swift */,
 				0CD6AA0D20E9165C0067A970 /* InfoViewController.swift */,
+				8E0A68F820E93D4200912907 /* GroupViewController.swift */,
+				8E8F8E8720E94A3F00882F78 /* AddGroupViewController.swift */,
+				8E8F8E8920E958F000882F78 /* SelectedUserViewCell.swift */,
+				8E8F8E9220E98AA200882F78 /* GroupViewCell.swift */,
+				8E8F8E9420E9911400882F78 /* GroupChatViewController.swift */,
+				8E8F8E9620E99DBC00882F78 /* GroupMessageCell.swift */,
+				8E8F8E9820E9A62A00882F78 /* MenuViewController.swift */,
 			);
 			path = "chating-seminar-ios";
 			sourceTree = "<group>";
@@ -111,6 +139,16 @@
 				84B1FF7452DAC794CB895060 /* Pods-chating-seminar-ios.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8E55054C20E942C0009BA1CD /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				8E55054D20E942DE009BA1CD /* CustomButton.swift */,
+				8E55054F20E94306009BA1CD /* CustomView.swift */,
+				8E8F8E8B20E9627800882F78 /* Utils.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		B2E19C8736B8B9502F0942D2 /* Frameworks */ = {
@@ -203,6 +241,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -211,6 +250,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -257,16 +297,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E8F8E9520E9911400882F78 /* GroupChatViewController.swift in Sources */,
+				8E55055020E94306009BA1CD /* CustomView.swift in Sources */,
 				8E6029D5208B5D5C00B8F812 /* FriendListViewController.swift in Sources */,
 				0CF45C7420E8FF1C00E7E62F /* CustomSlideViewController.swift in Sources */,
 				0C30A10320872CCC00E0C0F7 /* LoginViewController.swift in Sources */,
 				0C30A1052087562C00E0C0F7 /* MessageUserViewController.swift in Sources */,
+				8E55054E20E942DE009BA1CD /* CustomButton.swift in Sources */,
 				8E46A5BE209E5345003288E1 /* MessageCell.swift in Sources */,
 				0CF45C7620E901CA00E7E62F /* LeftViewController.swift in Sources */,
 				8EE8C3A22094EC41009B3548 /* ChatViewController.swift in Sources */,
+				8E8F8E9320E98AA200882F78 /* GroupViewCell.swift in Sources */,
 				8EE67424208CA9C5009EECD6 /* TableViewCell.swift in Sources */,
 				8E46A5BC209DF36A003288E1 /* Message.swift in Sources */,
+				8E8F8E9720E99DBC00882F78 /* GroupMessageCell.swift in Sources */,
+				8E8F8E8C20E9627800882F78 /* Utils.swift in Sources */,
+				8E8F8E9920E9A62A00882F78 /* MenuViewController.swift in Sources */,
 				0CE64681207BD3B4001E41D2 /* ViewController.swift in Sources */,
+				8E8F8E8A20E958F000882F78 /* SelectedUserViewCell.swift in Sources */,
+				8E8F8E8820E94A3F00882F78 /* AddGroupViewController.swift in Sources */,
+				8E0A68F920E93D4200912907 /* GroupViewController.swift in Sources */,
 				0CD6AA0E20E9165C0067A970 /* InfoViewController.swift in Sources */,
 				0CE6467F207BD3B4001E41D2 /* AppDelegate.swift in Sources */,
 			);

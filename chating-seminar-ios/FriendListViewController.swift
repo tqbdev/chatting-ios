@@ -54,6 +54,7 @@ class FriendListViewController: UIViewController,UITableViewDataSource,UITableVi
     }
     
     fileprivate func showLeftViewController() {
+        print("Show leftVC")
         leftVC?.expand()
     }
     
@@ -74,8 +75,14 @@ class FriendListViewController: UIViewController,UITableViewDataSource,UITableVi
         navigationController?.pushViewController(infoVC!, animated: true)
     }
     
+    func gotoGroupView() {
+        let infoVC = storyboard?.instantiateViewController(withIdentifier: "groupView")
+        //present(infoVC!, animated: true, completion: nil)
+        navigationController?.pushViewController(infoVC!, animated: true)
+    }
+    
     // MARK: Firebase storage avatar
-    func loadAvatar(email: String, imageView: UIImageView) {
+     func loadAvatar(email: String, imageView: UIImageView) {
         let storageRef = storage.reference()
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentsDirectory = paths[0]
@@ -143,7 +150,8 @@ class FriendListViewController: UIViewController,UITableViewDataSource,UITableVi
     }
     
     @objc func menuAction() {
-        showLeftViewController()
+        self.performSegue(withIdentifier: "gotoMenu", sender: nil)
+        //showLeftViewController()
     }
 
     @objc func createAction() {

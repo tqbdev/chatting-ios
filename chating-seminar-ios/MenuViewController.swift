@@ -1,8 +1,8 @@
 //
-//  LeftViewController.swift
+//  MenuViewController.swift
 //  chating-seminar-ios
 //
-//  Created by Tran Quoc Bao on 7/1/18.
+//  Created by An Nguyen on 7/2/18.
 //  Copyright © 2018 Tran Quoc Bao. All rights reserved.
 //
 
@@ -11,50 +11,16 @@ import UIKit
 import Firebase
 import Photos
 
-protocol SildeMenuDelegate {
-    func logout()
-    func gotoInfoView()
-    func gotoGroupView()
-}
-
-class LeftViewController: CustomSlideViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    var delegate: SildeMenuDelegate?
+class MenuViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
+     var delegate: SildeMenuDelegate?
     lazy var storage = Storage.storage()
 
     @IBOutlet weak var userAvatar: UIImageView!
-    
-    @IBAction func getInfoView(_ sender: UIButton) {
-        self.close()
-        delegate?.gotoInfoView()
-    }
-    
-    @IBAction func goToPersonalChatView(_ sender: UIButton) {
-    }
-    
-    @IBAction func goToGroupChatView(_ sender: UIButton) {
-        self.close()
-        delegate?.gotoGroupView()
-    }
-    
-    @IBAction func logoutAction(_ sender: UIButton) {
-        do {
-            try Auth.auth().signOut()
-            print("Logout successfully")
-            delegate?.logout()
-        } catch {
-            print(error)
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        Utils.loadAvatar(email: (Auth.auth().currentUser?.email)!, imageView: userAvatar, storage: storage)
         // Do any additional setup after loading the view.
-        loadUserAvatar()
-        userAvatar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleSelectUserAvatar)))
-        userAvatar.isUserInteractionEnabled = true
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,6 +45,16 @@ class LeftViewController: CustomSlideViewController, UIImagePickerControllerDele
         self.present(alert, animated: true, completion: nil)
     }
     
+    @IBAction func Logout(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            print("Logout successfully")
+            self.navigationController?.popToRootViewController(animated: true)
+        } catch {
+            print(error)
+        }
+    }
+    @IBOutlet weak var Logout: UIButton!
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         self.dismiss(animated: true, completion: nil)
         
@@ -113,36 +89,7 @@ class LeftViewController: CustomSlideViewController, UIImagePickerControllerDele
         }
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
 
-    func loadUserAvatar() {
-        let storageRef = storage.reference()
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let documentsDirectory = paths[0]
-        let filePath = "file:\(documentsDirectory)/" + (Auth.auth().currentUser?.email!)! + ".jpg"
-        guard let fileURL = URL(string: filePath) else { return }
-        let storagePath = "profileAvatars/" + (Auth.auth().currentUser?.email!)! + ".jpg"
-        
-        // [START downloadimage]
-        storageRef.child(storagePath).write(toFile: fileURL, completion: { (url, error) in
-            if let error = error {
-                print("Error downloading:\(error)")
-                print ("Download Failed")
-                self.userAvatar.layer.cornerRadius = self.userAvatar.layer.bounds.width/2
-                self.userAvatar.layer.masksToBounds = true
-                return
-            } else if let imagePath = url?.path {
-                print ("Download Succeeded!")
-                self.userAvatar.image = UIImage(contentsOfFile: imagePath)
-                self.userAvatar.layer.cornerRadius = self.userAvatar.layer.bounds.width/2
-                self.userAvatar.layer.masksToBounds = true
-            }
-        })
-        // [END downloadimage]
-    }
-    
     /*
     // MARK: - Navigation
 
